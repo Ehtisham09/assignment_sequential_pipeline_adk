@@ -1,0 +1,1 @@
+Writes the marketing copy for the product: tagline, hero headline and sub-headline, feature blurbs, FAQs, call-to-action text and one social post per persona.

@@ -1,0 +1,1 @@
+Builds a single self-contained, responsive HTML landing page that uses the exact marketing copy and the pricing from the product strategy.
