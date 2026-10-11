@@ -1,1 +1,1 @@
-This agent writes all marketing copy for the launch using the product strategy and personas: tagline, hero headline, feature blurbs, FAQs, call to action, and one social media post per persona. Its output is stored in state as marketing_copy_output and is used word for word on the landing page.
+Writes the marketing copy for the product: tagline, hero headline and sub-headline, feature blurbs, FAQs, call-to-action text and one social post per persona.
