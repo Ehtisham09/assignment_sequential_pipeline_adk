@@ -69,6 +69,37 @@ def write_html_file(content: str) -> dict:
         dict: A dictionary containing the status and generated filename.
     """
 
+def calculate_pricing(cost: float, margin_percent: float) -> dict:
+    """
+    Calculates a price for three pricing tiers (basic, plus, premium).
+
+    Args:
+        cost (float): Estimated cost to produce one unit, in US dollars. Must be greater than 0.
+        margin_percent (float): Desired profit margin as a percentage of cost, e.g. 40 for 40%.
+
+    Returns:
+        dict: Contains status, the cost and margin used, and a "tiers" dictionary
+              with the price in US dollars for basic, plus and premium.
+    """
+    if cost <= 0 or margin_percent < 0:
+        return {
+            "status": "error",
+            "message": "cost must be greater than 0 and margin_percent must not be negative."
+        }
+
+    base_price = cost * (1 + margin_percent / 100)
+
+    return {
+        "status": "success",
+        "cost": round(cost, 2),
+        "margin_percent": margin_percent,
+        "tiers": {
+            "basic": round(base_price, 2),
+            "plus": round(base_price * 1.4, 2),
+            "premium": round(base_price * 1.8, 2),
+        },
+    }
+
     # TODO: Follow the same pattern as write_text_file:
     #   1. build a timestamp
     #   2. filename = f"output/{timestamp}_landing_page.html"

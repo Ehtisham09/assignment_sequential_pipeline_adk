@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".
 from utils.file_loader import load_instructions_file
 from agents.market_researcher.agent import market_researcher_agent
 from agents.persona_builder.agent import persona_builder_agent
+from agents.product_strategist.agent import product_strategist_agent
 # TODO: import the other five agents as you finish them, e.g.
 # from agents.persona_builder.agent import persona_builder_agent
 # from agents.product_strategist.agent import product_strategist_agent
@@ -19,6 +20,7 @@ root_agent = SequentialAgent(
     sub_agents=[
         market_researcher_agent,
         persona_builder_agent,
+        product_strategist_agent,
     ],
     description=load_instructions_file("agents/root_launch_pipeline/description.txt")
 )
