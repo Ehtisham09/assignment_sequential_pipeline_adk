@@ -31,6 +31,7 @@ RULES
 - Do not write marketing copy, prices, or product features. Later agents do that.
 - Keep the whole report under 600 words.
 - Do not ask the user follow-up questions. Make reasonable assumptions and state them.
+- Do not wrap the report in code fences. Start directly with the heading "# Market Research Report".
 
 TOOL USAGE
 - Call write_text_file exactly once with:

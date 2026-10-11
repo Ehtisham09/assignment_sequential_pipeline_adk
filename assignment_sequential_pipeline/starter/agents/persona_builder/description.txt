@@ -1,1 +1,1 @@
-This agent reads the market research report and creates three detailed customer personas for the product. Each persona describes who the customer is, what they want, what frustrates them, and what would make them buy. Its output is stored in state as personas_output.
+Reads the market research report and creates three realistic customer personas, each with goals, pain points, buying triggers and a quote.
