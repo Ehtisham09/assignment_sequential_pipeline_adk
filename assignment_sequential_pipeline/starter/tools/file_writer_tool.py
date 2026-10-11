@@ -69,6 +69,26 @@ def write_html_file(content: str) -> dict:
         dict: A dictionary containing the status and generated filename.
     """
 
+    timestamp = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    filename = f"output/{timestamp}_landing_page.html"
+
+    Path("output").mkdir(exist_ok=True)
+
+    try:
+        Path(filename).write_text(content, encoding="utf-8")
+        return {
+            "status": "success",
+            "file": filename,
+            "message": "landing_page saved successfully."
+        }
+
+    except Exception as e:
+        return {
+            "status": "error",
+            "file": filename,
+            "message": f"Error: {str(e)}"
+        }
+
 def calculate_pricing(cost: float, margin_percent: float) -> dict:
     """
     Calculates a price for three pricing tiers (basic, plus, premium).
