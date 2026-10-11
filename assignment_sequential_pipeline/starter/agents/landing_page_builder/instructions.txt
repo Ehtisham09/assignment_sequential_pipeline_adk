@@ -33,8 +33,11 @@ RULES
 - Keep the page short: no more than the 6 sections above, and keep the CSS compact.
 - Do not ask the user questions.
 - Do not add any explanation before or after the HTML.
+- Use single quotes for every HTML attribute, for example class='card'. Never use double quote characters inside the HTML tags.
+- If the copy itself contains a double quote character, write it as the HTML entity for a double quote so that it still displays the same.
+- Keep the CSS under 30 lines, with no comments.
+- Write the HTML on as few lines as practical and do not add comments to the HTML.
 
 TOOL USAGE
 - Call write_html_file exactly once with content = the full HTML document. Always provide the content argument. Never call the tool with empty arguments.
-- Call write_html_file only once. After it returns success, do not call it again.
-- After the tool returns, reply with the SAME full HTML as your final answer. Do not reply with only "saved successfully". The next agent reads your final answer.
+- After it returns success, your final answer must be the SAME full HTML document and nothing else. It must start with the doctype line and end with the closing html tag. Do not write any sentence before or after it, and do not call the tool again.

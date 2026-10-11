@@ -166,14 +166,26 @@ class BedrockLlm(BaseLlm):
         client = self._build_client()
         messages = self._to_lc_messages(llm_request)
         lc_tools = self._to_lc_tools(llm_request)
-        print("TOOLS SENT:", lc_tools)
+        
 
         if lc_tools:
             client = client.bind_tools(lc_tools)
 
-        response: AIMessage = await asyncio.get_event_loop().run_in_executor(
-            None, client.invoke, messages
-        )
+            response = None
+        last_error = None
+        for attempt in range(3):
+            try:
+                response = await asyncio.get_event_loop().run_in_executor(
+                    None, client.invoke, messages
+                )
+                break
+            except Exception as e:
+                last_error = e
+                if "ModelErrorException" not in type(e).__name__ and "invalid sequence" not in str(e):
+                    raise
+                logger.warning("Model returned an invalid tool-use sequence, retrying (%s/3)", attempt + 1)
+        if response is None:
+            raise last_error
 
         text, tool_blocks = self._split_content(response.content)
 

@@ -9,8 +9,7 @@ from agents.persona_builder.agent import persona_builder_agent
 from agents.product_strategist.agent import product_strategist_agent
 from agents.copywriter.agent import copywriter_agent
 from agents.landing_page_builder.agent import landing_page_builder_agent
-# TODO: import the other five agents as you finish them, e.g.
-# from agents.qa_reviewer.agent import qa_reviewer_agent
+from agents.qa_reviewer.agent import qa_reviewer_agent
 
 root_agent = SequentialAgent(
     name="root_launch_pipeline_agent",
@@ -21,6 +20,7 @@ root_agent = SequentialAgent(
         product_strategist_agent,
         copywriter_agent,
         landing_page_builder_agent,
+        qa_reviewer_agent,
     ],
     description=load_instructions_file("agents/root_launch_pipeline/description.txt")
 )
