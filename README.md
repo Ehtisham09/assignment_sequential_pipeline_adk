@@ -65,7 +65,7 @@ python agent_runner.py            # terminal run: type a product idea when asked
 adk web                           # optional browser UI
 ```
 
-**Model:** Gemini, `gemini-3.6-flash` by default. It can be changed without editing code by setting `GEMINI_MODEL` in `.env` (for example `gemini-3.1-flash-lite` if the default is overloaded). `GEMINI_DELAY_SECONDS` controls the short pause before each model call, which keeps the run inside the free-tier rate limit.
+**Model:** Gemini, `gemini-3.8-flash`. It can be changed without editing code by setting `GEMINI_MODEL` in `.env` (for example `gemini-3.1-flash-lite` if the default is overloaded). `GEMINI_DELAY_SECONDS` controls the short pause before each model call, which keeps the run inside the free-tier rate limit.
 
 **Never commit** the `.env` file or the `.venv` folder.
 
@@ -99,4 +99,4 @@ Writing the instructions was the part that needed the most care. I learned that 
 
 The custom tools showed me that an agent can do more than generate text. `calculate_pricing` gives the strategist real numbers, `count_words` lets the copywriter check length limits, and `check_html` lets the page builder and reviewer test the HTML instead of guessing. I also had to tell the agents to return the full document after saving a file, because otherwise a later agent could receive only "saved successfully" and have nothing to work with.
 
-I also ran into practical problems. I had no AWS Bedrock key, so I switched the pipeline to the Gemini API, which only needed the model name and API key to change because all agents use one shared model setting. During testing the model returned a 503 "high demand" error, and I fixed it by switching to a lighter model and spacing out the calls. If I continued this project, I would add a retry step for failed model calls, let the QA agent send feedback back to earlier agents so they can fix problems automatically, and add images to the landing page.
+I also ran into practical problems. I had no AWS Bedrock key, so I switched the pipeline to the Gemini API, which only needed the model name and API key to change because all agents use one shared model setting. During testing the model returned a 503 "high demand" error, and I fixed it by switching to a new model and spacing out the calls. If I continued this project, I would add a retry step for failed model calls, let the QA agent send feedback back to earlier agents so they can fix problems automatically, and add images to the landing page.
