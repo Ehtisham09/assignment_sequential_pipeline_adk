@@ -69,14 +69,10 @@ adk web                           # optional browser UI
 
 **Never commit** the `.env` file or the `.venv` folder.
 
-## Screenshot
+## Screenshots
 
-> 📸 **ADD YOUR SCREENSHOT HERE.**
-> Save your screenshot in the `starter` folder (for example as `screenshot.png`), then replace this whole block with:
->
-> `![adk web run](screenshot.png)`
+<img width="959" height="440" alt="Screenshot 2026-10-10 221144" src="https://github.com/user-attachments/assets/5ac31d32-2b2b-492e-a416-006f51e62621" />
 
-## Other Screenshots
 
 <img width="957" height="437" alt="Screenshot 2026-10-10 221234" src="https://github.com/user-attachments/assets/6f0f39db-8e57-4119-9b63-7bc31bec187e" />
 
