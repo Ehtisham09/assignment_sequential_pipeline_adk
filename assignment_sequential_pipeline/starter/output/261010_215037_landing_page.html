@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stride - Smarter study schedules that adapt to you.</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --highlight: #eef2ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+    header { background: #ffffff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+    nav { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--primary); }
+    .btn { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; text-align: center; border: none; cursor: pointer; }
+    .btn:hover { background-color: var(--primary-hover); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem; }
+    #hero { text-align: center; padding: 5rem 1.5rem 4rem; background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%); }
+    .tagline { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.875rem; margin-bottom: 1rem; }
+    #hero h1 { font-size: 2.75rem; line-height: 1.2; margin-bottom: 1.25rem; color: var(--text); max-width: 800px; margin-left: auto; margin-right: auto; }
+    #hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 2rem; }
+    #features { background: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 2.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .feature-card { background: var(--bg); padding: 2rem; border-radius: 8px; border: 1px solid var(--border); }
+    .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text); }
+    .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+    #pricing { padding: 4rem 1.5rem; }
+    .pricing-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; }
+    .pricing-card.featured { border-color: var(--primary); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1); position: relative; }
+    .pricing-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .pricing-best { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem; min-height: 2.8rem; }
+    .price { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .price span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+    .pricing-includes { list-style: none; margin-bottom: 2rem; flex-grow: 1; border-top: 1px solid var(--border); padding-top: 1rem; }
+    .pricing-includes li { font-size: 0.925rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    #faq { background: #ffffff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    .faq-item { background: var(--bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+    .faq-item h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--text); }
+    .faq-item p { color: var(--text-muted); font-size: 0.95rem; }
+    #cta { text-align: center; padding: 5rem 1.5rem; background: var(--highlight); }
+    #cta h2 { font-size: 2.25rem; margin-bottom: 1rem; }
+    #cta p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    footer { background: #ffffff; border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      #hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" class="logo">Stride</a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#cta" class="btn">Get Started Free</a>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="tagline">Smarter study schedules that adapt to you.</div>
+    <h1>Stop Rebuilding Study Schedules That Fall Apart</h1>
+    <p>Stride turns your course syllabi into flexible daily study plans that automatically adapt when life gets in the way.</p>
+    <a href="#cta" class="btn">Get Started Free</a>
+  </section>
+
+  <section id="features" class="container">
+    <h2 class="section-title">Features</h2>
+    <div class="grid-3">
+      <div class="feature-card">
+        <h3>Automated Syllabus Ingestion</h3>
+        <p>Upload your syllabus and let AI instantly turn assignments, exams, and readings into an organized, realistic semester schedule.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Dynamic One-Tap Rebalancing</h3>
+        <p>Life happens. Reschedule missed or delayed study blocks across upcoming free windows with a single tap—no manual replanning.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Fatigue-Aware Study Pacing</h3>
+        <p>Prevent burnout with dynamic study blocks and break intervals that automatically adjust to subject difficulty and current mental energy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="container">
+    <h2 class="section-title">Pricing</h2>
+    <div class="grid-3">
+      <div class="pricing-card">
+        <h3>Free</h3>
+        <p class="pricing-best">Best For: Casual students exploring structured study habits</p>
+        <div class="price">$0<span>/month</span></div>
+        <ul class="pricing-includes">
+          <li>Manual task scheduling, standard Pomodoro timer, 1 syllabus upload per term, 7-day schedule view.</li>
+        </ul>
+        <a href="#cta" class="btn">Get Started Free</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Pro</h3>
+        <p class="pricing-best">Best For: Full-time undergraduate and graduate students managing multi-course workloads</p>
+        <div class="price">$8<span>/month</span></div>
+        <ul class="pricing-includes">
+          <li>Unlimited syllabus ingestion, AI dynamic rebalancing, fatigue-aware pacing, planned vs. actual analytics, calendar sync.</li>
+        </ul>
+        <a href="#cta" class="btn">Get Started Free</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Team</h3>
+        <p class="pricing-best">Best For: Study groups, thesis pods, and campus academic cohorts (per user/month)</p>
+        <div class="price">$18<span>/user/month</span></div>
+        <ul class="pricing-includes">
+          <li>All Pro features, plus shared assignment milestones, group study session scheduling, and collaborative progress tracking.</li>
+        </ul>
+        <a href="#cta" class="btn">Get Started Free</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>How does Stride build my study schedule?</h3>
+        <p>Simply upload your course syllabus. Stride automatically extracts assignments, exam weightings, and due dates, transforming them into a realistic day-by-day study roadmap.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much does Stride cost?</h3>
+        <p>Stride offers three plans: Free ($0/month) with standard scheduling and one syllabus upload; Pro ($8/month) with unlimited syllabi, dynamic rebalancing, and fatigue-aware pacing; and Team ($18/user/month) for study groups and cohorts.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens if I miss a study session?</h3>
+        <p>You never need to rebuild your calendar manually. Tap rebalance, and Stride instantly recalculates your upcoming free blocks to keep you on track.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta">
+    <h2>Stop Rebuilding Study Schedules That Fall Apart</h2>
+    <p>Stride turns your course syllabi into flexible daily study plans that automatically adapt when life gets in the way.</p>
+    <a href="#" class="btn">Get Started Free</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Stride. Smarter study schedules that adapt to you.</p>
+  </footer>
+</body>
+</html>
